@@ -1,0 +1,14 @@
+anguage: node_js
+node_js:
+  -11.6.0
+cache: npm
+
+install:
+  - npm install
+
+script:
+  - docker pull jeancarlobv/somativa2
+  - docker run -v $PWD/:/app/report/jeancarlobv/somativa2
+
+after_script:
+  - bash ./telegram_notification.sh
